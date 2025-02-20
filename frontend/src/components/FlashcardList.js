@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react"; // Add useCallback
 import axios from "axios";
 import Flashcard from "./Flashcard";
 import BlurText from "./BlurText"; // Import the BlurText component
 import backgroundImageUrl from "./man.jpg"; // Import the background image
 import "./FlashcardList.css"; // Import the CSS file for styling
-
-import "./AddFlashcardModal.css"
-
+import "./AddFlashcardModal.css";
 
 const FlashcardList = ({ token }) => {
   const [flashcards, setFlashcards] = useState([]);
@@ -14,8 +12,8 @@ const FlashcardList = ({ token }) => {
   const [newQuestion, setNewQuestion] = useState(""); // State for the new question
   const [newAnswer, setNewAnswer] = useState(""); // State for the new answer
 
-  // Fetch flashcards from the backend
-  const fetchFlashcards = async () => {
+  // Wrap fetchFlashcards in useCallback
+  const fetchFlashcards = useCallback(async () => {
     try {
       const res = await axios.get("https://flashcard-learning-7zzf.onrender.com/api/flashcards", {
         headers: { Authorization: `Bearer ${token}` },
@@ -24,16 +22,12 @@ const FlashcardList = ({ token }) => {
     } catch (err) {
       console.error(err);
     }
-  };
-
-  useEffect(() => {
-  fetchFlashcards();
-}, [fetchFlashcards]); // Add fetchFlashcards to the dependency array
+  }, [token]); // Add token as a dependency
 
   // Fetch flashcards on component mount
   useEffect(() => {
     fetchFlashcards();
-  }, [token]);
+  }, [fetchFlashcards]); // Add fetchFlashcards to the dependency array
 
   // Group flashcards by box
   const groupFlashcardsByBox = () => {
@@ -71,7 +65,6 @@ const FlashcardList = ({ token }) => {
   // Grouped flashcards
   const groupedFlashcards = groupFlashcardsByBox();
 
-  
   return (
     <div
       className="flashcard-list"
