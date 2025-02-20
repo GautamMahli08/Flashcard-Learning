@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Particles from "./Particles"; // Import the Particles component
 import "./Register.css"; // Import the CSS file for styling
 import backgroundImageUrl from "./cap.jpeg";
+const API_URL = process.env.REACT_APP_API_URL
 
 const Register = ({ setToken }) => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ const Register = ({ setToken }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://flashcard-learning-1.onrender.com/api/auth/register", {
+      const res = await axios.post(`${API_URL}/api/auth/register`, {
         username,
         password,
       });
