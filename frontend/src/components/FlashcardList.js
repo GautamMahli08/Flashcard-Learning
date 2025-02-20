@@ -17,7 +17,7 @@ const FlashcardList = ({ token }) => {
   // Fetch flashcards from the backend
   const fetchFlashcards = async () => {
     try {
-      const res = await axios.get("https://flashcard-learning-7zzf.onrender.com", {
+      const res = await axios.get("https://flashcard-learning-7zzf.onrender.com/api/flashcards", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFlashcards(res.data);
@@ -49,7 +49,7 @@ const FlashcardList = ({ token }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://flashcard-learning-7zzf.onrender.com",
+        "https://flashcard-learning-7zzf.onrender.com/api/flashcards",
         { question: newQuestion, answer: newAnswer },
         {
           headers: { Authorization: `Bearer ${token}` },
