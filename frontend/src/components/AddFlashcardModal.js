@@ -9,7 +9,7 @@ const AddFlashcardModal = ({ onClose, onAddFlashcard, token }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/flashcards",
+        "https://flashcard-learning-7zzf.onrender.com",
         { question, answer },
         {
           headers: { Authorization: `Bearer ${token}` },
