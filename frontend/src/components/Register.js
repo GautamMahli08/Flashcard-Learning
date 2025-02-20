@@ -14,7 +14,7 @@ const Register = ({ setToken }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/register`, {
+      const res = await axios.post("https://flashcard-learning-1.onrender.com/api/auth/register", {
         username,
         password,
       });
