@@ -15,7 +15,7 @@ const FlashcardList = ({ token }) => {
   // Wrap fetchFlashcards in useCallback
   const fetchFlashcards = useCallback(async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/flashcards`, {
+      const res = await axios.get("https://flashcard-learning-1.onrender.com/api/flashcards", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFlashcards(res.data);
@@ -47,7 +47,7 @@ const FlashcardList = ({ token }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/flashcards`,
+        "https://flashcard-learning-1.onrender.com/api/flashcards",
         { question: newQuestion, answer: newAnswer },
         {
           headers: { Authorization: `Bearer ${token}` },
