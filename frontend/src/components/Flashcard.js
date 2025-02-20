@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Flashcard.css"; // Import the CSS file for styling
+const API_URL = process.env.REACT_APP_API_URL;
+
 
 const Flashcard = ({ flashcard, onUpdate, token }) => {
   const [showAnswer, setShowAnswer] = useState(false);
@@ -8,7 +10,7 @@ const Flashcard = ({ flashcard, onUpdate, token }) => {
   const handleResponse = async (isCorrect) => {
     try {
       await axios.put(
-      `https://flashcard-learning-1.onrender.com/api/flashcards/${flashcard._id}`,
+     `${API_URL}/api/flashcards/${flashcard._id}`,
         { isCorrect },
         {
           headers: { Authorization: `Bearer ${token}` },
