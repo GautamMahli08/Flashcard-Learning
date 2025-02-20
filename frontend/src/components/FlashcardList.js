@@ -17,7 +17,7 @@ const FlashcardList = ({ token }) => {
   // Fetch flashcards from the backend
   const fetchFlashcards = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/flashcards", {
+      const res = await axios.get("https://flashcard-learning-7zzf.onrender.com", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFlashcards(res.data);
