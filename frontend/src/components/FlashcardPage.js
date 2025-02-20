@@ -8,7 +8,7 @@ const FlashcardPage = () => {
   // Fetch stacks and boxes for the logged-in user
   const fetchStacks = async () => {
     try {
-      const res = await axios.get("https://flashcard-learning-7zzf.onrender.com/api/stacks", {
+      const res = await axios.get("https://flashcard-learning-1.onrender.com/api/stacks", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setStacks(res.data);
