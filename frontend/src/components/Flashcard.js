@@ -8,7 +8,7 @@ const Flashcard = ({ flashcard, onUpdate, token }) => {
   const handleResponse = async (isCorrect) => {
     try {
       await axios.put(
-        `https://flashcard-learning-7zzf.onrender.com/${flashcard._id}`,
+       `${process.env.REACT_APP_API_URL}/${flashcard._id}`,
         { isCorrect },
         {
           headers: { Authorization: `Bearer ${token}` },
