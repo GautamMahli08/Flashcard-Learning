@@ -15,7 +15,7 @@ const FlashcardList = ({ token }) => {
   // Wrap fetchFlashcards in useCallback
   const fetchFlashcards = useCallback(async () => {
     try {
-      const res = await axios.get("https://flashcard-learning-7zzf.onrender.com/api/flashcards", {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/flashcards`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFlashcards(res.data);
