@@ -26,6 +26,10 @@ const FlashcardList = ({ token }) => {
     }
   };
 
+  useEffect(() => {
+  fetchFlashcards();
+}, [fetchFlashcards]); // Add fetchFlashcards to the dependency array
+
   // Fetch flashcards on component mount
   useEffect(() => {
     fetchFlashcards();
