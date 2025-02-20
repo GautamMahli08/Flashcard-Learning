@@ -4,7 +4,7 @@ import Flashcard from "./Flashcard";
 import BlurText from "./BlurText"; // Import the BlurText component
 import backgroundImageUrl from "./man.jpg"; // Import the background image
 import "./FlashcardList.css"; // Import the CSS file for styling
-import AddFlashcardModal from "./AddFlashcardModal"; 
+
 import "./AddFlashcardModal.css"
 
 
