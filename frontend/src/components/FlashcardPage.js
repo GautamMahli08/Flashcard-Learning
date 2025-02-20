@@ -8,7 +8,7 @@ const FlashcardPage = () => {
   // Fetch stacks and boxes for the logged-in user
   const fetchStacks = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/stacks", {
+      const res = await axios.get("${process.env.REACT_APP_API_URL}/api/stacks", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setStacks(res.data);
