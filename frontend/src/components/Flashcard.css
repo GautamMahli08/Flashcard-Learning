@@ -1,20 +1,21 @@
 /* Flashcard.css */
 .flashcard {
-    background: rgba(116, 114, 114, 0.9);
+  background: rgba(255, 255, 255, 0.1);
     padding: 1.5rem;
     margin: 1rem 0;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
   }
   
   .flashcard h3 {
     margin-bottom: 1rem;
-    color: #000000;
+    color:#e0c8e9;
   }
   
   .flashcard p {
     margin-bottom: 1rem;
-    color: #000000;
+    color: #e4e4e4;
   }
   
   .flashcard button {
@@ -43,3 +44,12 @@
     background-color: #657f9e;
     color: rgb(0, 0, 0);
   }
+
+.add-flashcard-button{
+  color: rgb(0, 0, 0);
+} 
+.flashcard-box {
+  margin-bottom: 3rem;
+  position: relative; /* Ensure the content is above the blur overlay */
+  z-index: 1;
+}

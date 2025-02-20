@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import FlashcardList from "./components/FlashcardList";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import "./App.css"; 
+import "./App.css";
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));

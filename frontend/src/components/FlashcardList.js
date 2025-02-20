@@ -2,11 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Flashcard from "./Flashcard";
 import BlurText from "./BlurText"; // Import the BlurText component
-import backgroundImage from "./bg_1.jpg"; // Import the background image
+import backgroundImageUrl from "./man.jpg"; // Import the background image
 import "./FlashcardList.css"; // Import the CSS file for styling
+import AddFlashcardModal from "./AddFlashcardModal"; 
+import "./AddFlashcardModal.css"
+
 
 const FlashcardList = ({ token }) => {
   const [flashcards, setFlashcards] = useState([]);
+  const [showAddForm, setShowAddForm] = useState(false); // State to toggle the add form
+  const [newQuestion, setNewQuestion] = useState(""); // State for the new question
+  const [newAnswer, setNewAnswer] = useState(""); // State for the new answer
 
   // Fetch flashcards from the backend
   const fetchFlashcards = async () => {
@@ -38,14 +44,35 @@ const FlashcardList = ({ token }) => {
     return grouped;
   };
 
+  // Handle adding a new flashcard
+  const handleAddFlashcard = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/flashcards",
+        { question: newQuestion, answer: newAnswer },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      setFlashcards([...flashcards, res.data]); // Add the new flashcard to the list
+      setNewQuestion(""); // Clear the question input
+      setNewAnswer(""); // Clear the answer input
+      setShowAddForm(false); // Hide the add form
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   // Grouped flashcards
   const groupedFlashcards = groupFlashcardsByBox();
 
+  
   return (
     <div
       className="flashcard-list"
       style={{
-        backgroundImage: `url(${backgroundImage})`, // Set the background image
+        backgroundImage: `url(${backgroundImageUrl})`, // Set the background image
       }}
     >
       {/* Add a blur overlay */}
@@ -58,9 +85,6 @@ const FlashcardList = ({ token }) => {
         direction="top"
         className="text-2xl mb-8"
       />
-<hr className="division-line" />
-
-
       {Object.keys(groupedFlashcards).map((box) => (
         <div key={box} className="flashcard-box">
           <h2>Box {box}</h2>
@@ -74,6 +98,34 @@ const FlashcardList = ({ token }) => {
           ))}
         </div>
       ))}
+      {/* Add Flashcard Button and Form */}
+      <div className="add-flashcard-container">
+        <button
+          className="add-flashcard-button"
+          onClick={() => setShowAddForm(!showAddForm)}
+        >
+          {showAddForm ? "Cancel" : "Add Flashcard"}
+        </button>
+        {showAddForm && (
+          <form onSubmit={handleAddFlashcard} className="add-flashcard-form">
+            <input
+              type="text"
+              placeholder="Question"
+              value={newQuestion}
+              onChange={(e) => setNewQuestion(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Answer"
+              value={newAnswer}
+              onChange={(e) => setNewAnswer(e.target.value)}
+              required
+            />
+            <button type="submit">Add</button>
+          </form>
+        )}
+      </div>
     </div>
   );
 };

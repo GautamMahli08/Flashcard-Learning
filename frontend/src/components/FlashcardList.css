@@ -64,7 +64,7 @@ color: rgb(226, 218, 218);
 
 .flashcard-button.wrong {
 background-color: #b81425;
-color: white;
+color: rgb(253, 253, 253);
 }
 
 .flashcard-button:hover {
@@ -84,7 +84,7 @@ opacity: 0.9;
   margin-bottom: 2rem;
   position: relative; /* Ensure the text is above the blur overlay */
   z-index: 1;
-  color: #cfbbbb;
+  color: #f2f0ff;
 }
 
 .division-line {
@@ -93,3 +93,72 @@ opacity: 0.9;
   background: #252222; /* Light gray color */
   margin: 20px 0; /* Add some spacing above and below the line */
 }
+
+.add-flashcard-container {
+  position: relative;
+  bottom: -250px;
+    left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  text-align: center;
+}
+
+.add-flashcard-button {
+  position: relative;
+  padding: 10px 31px;
+  bottom:7px;
+  background-color: #4c4eaf;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.add-flashcard-button:hover {
+  background-color: #1d5772; /* Darker green on hover */
+}
+
+.add-flashcard-form {
+
+    position: fixed;
+    top: -345%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:  rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    padding: 32px;
+    border-radius: 16px;
+    width: 733px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7px); /* Increase blur for better effect */
+    z-index: 1000;
+  }
+
+
+.add-flashcard-form input {
+  width: 81%; /* Adjusted width */
+  padding: 0.55rem;
+  margin: 0.5rem 0;
+  border: 1px solid #1b1a1a; /* Dark border */
+  border-radius: 5px;
+  font-size: 1rem;
+  background: rgba(224, 224, 224, 0.8); 
+}
+
+.add-flashcard-form button {
+  width: 22%; /* Adjusted width */
+  padding: 0.65rem;
+  margin-top: 1rem;
+  background-color: rgba(76, 49, 199, 0.959); /* Semi-transparent dark button background */
+  color: rgb(235, 229, 229); /* Light gray text color */
+  border: none;
+  border-radius: 4px; /* Adjusted border radius */
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.add-flashcard-form button:hover {
+  background-color: #444997; /* Darker green on hover */
+}
+

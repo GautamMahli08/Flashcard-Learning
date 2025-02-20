@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Import Link for navigation
 import Particles from "./Particles"; // Import the Particles component
-import backgroundImage from "./card_img.jpg"; // Import the background image
 import "./Login.css"; // Import the CSS file for styling
+import backgroundImageUrl from "./marvels.jpeg"; // Import the background image
 
 const Login = ({ setToken }) => {
   const [username, setUsername] = useState("");
@@ -14,10 +14,7 @@ const Login = ({ setToken }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
-        username,
-        password,
-      });
+      const res = await axios.post("http://localhost:5000/api/auth/login", { username, password });
       setToken(res.data.token);
       navigate("/");
     } catch (err) {
@@ -25,15 +22,14 @@ const Login = ({ setToken }) => {
     }
   };
 
+  // Path to the background image in the public folder
+  
+
   return (
     <div
       className="login-page"
       style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover", // Ensure the image covers the entire container
-        backgroundPosition: "center", // Center the image
-        backgroundRepeat: "no-repeat", // Prevent the image from repeating
-        backgroundColor: "#000", // Fallback background color (match the edges of the image)
+        backgroundImage: `url(${backgroundImageUrl})`, // Set the background image
       }}
     >
       {/* Add the Particles background */}
@@ -70,6 +66,9 @@ const Login = ({ setToken }) => {
           />
           <button type="submit">Login</button>
         </form>
+        <p className="register-link">
+          Don't have an account? <Link to="/register">Register here</Link>
+        </p>
       </div>
     </div>
   );
