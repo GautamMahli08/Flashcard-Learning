@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(
   cors({
-    origin: "https://learnwithflashcard.netlify.app/", // Replace with your frontend URL
+    origin: "https://learnwithflashcard.netlify.app", // Replace with your frontend URL
     credentials: true,
   })
 );
