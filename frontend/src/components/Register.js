@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Particles from "./Particles"; // Import the Particles component
 import "./Register.css"; // Import the CSS file for styling
 import backgroundImageUrl from "./cap.jpeg";
-const API_URL = process.env.REACT_APP_API_URL
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Register = ({ setToken }) => {
   const [username, setUsername] = useState("");
