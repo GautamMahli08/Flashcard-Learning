@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const FlashcardPage = () => {
   const [stacks, setStacks] = useState([]);
@@ -8,7 +9,7 @@ const FlashcardPage = () => {
   // Fetch stacks and boxes for the logged-in user
   const fetchStacks = async () => {
     try {
-      const res = await axios.get("https://flashcard-learning-1.onrender.com/api/stacks", {
+      const res = await axios.get(`${API_URL}/api/stacks`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setStacks(res.data);
