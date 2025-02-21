@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom"; // Import Link for navigat
 import Particles from "./Particles"; // Import the Particles component
 import "./Login.css"; // Import the CSS file for styling
 import backgroundImageUrl from "./marvels.jpeg"; // Import the background image
-const API_URL = process.env.REACT_APP_API_URL ;
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Login = ({ setToken }) => {
   const [username, setUsername] = useState("");
