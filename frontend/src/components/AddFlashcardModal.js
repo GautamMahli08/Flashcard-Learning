@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+const API_URL = process.env.REACT_APP_API_URL ;
 
 const AddFlashcardModal = ({ onClose, onAddFlashcard, token }) => {
   const [question, setQuestion] = useState("");
@@ -9,7 +10,7 @@ const AddFlashcardModal = ({ onClose, onAddFlashcard, token }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://flashcard-learning-7zzf.onrender.com/api/flashcards",
+        `https://flashcard-learning-7zzf.onrender.com/api/flashcards",
         { question, answer },
         {
           headers: { Authorization: `Bearer ${token}` },
