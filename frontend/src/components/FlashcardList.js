@@ -48,7 +48,7 @@ const FlashcardList = ({ token }) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://flashcard-learning-1.onrender.com/api/flashcards",
+        `${API_URL}/api/flashcards`,
         { question: newQuestion, answer: newAnswer },
         {
           headers: { Authorization: `Bearer ${token}` },
