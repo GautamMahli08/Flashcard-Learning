@@ -5,6 +5,7 @@ import BlurText from "./BlurText"; // Import the BlurText component
 import backgroundImageUrl from "./man.jpg"; // Import the background image
 import "./FlashcardList.css"; // Import the CSS file for styling
 import "./AddFlashcardModal.css";
+const API_URL = process.env.REACT_APP_API_URL ;
 
 const FlashcardList = ({ token }) => {
   const [flashcards, setFlashcards] = useState([]);
@@ -15,7 +16,7 @@ const FlashcardList = ({ token }) => {
   // Wrap fetchFlashcards in useCallback
   const fetchFlashcards = useCallback(async () => {
     try {
-      const res = await axios.get("https://flashcard-learning-1.onrender.com/api/flashcards", {
+      const res = await axios.get(`${API_URL}/api/flashcards`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFlashcards(res.data);
