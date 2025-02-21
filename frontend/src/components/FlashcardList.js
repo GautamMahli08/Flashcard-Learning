@@ -5,7 +5,7 @@ import BlurText from "./BlurText"; // Import the BlurText component
 import backgroundImageUrl from "./man.jpg"; // Import the background image
 import "./FlashcardList.css"; // Import the CSS file for styling
 import "./AddFlashcardModal.css";
-const API_URL = process.env.REACT_APP_API_URL ;
+const API_URL = process.env.REACT_APP_API_URL;
 
 const FlashcardList = ({ token }) => {
   const [flashcards, setFlashcards] = useState([]);
